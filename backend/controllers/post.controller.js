@@ -193,7 +193,7 @@ export const getUserPosts = async (req, res) => {
       .sort({ createdAt: -1 })
       .populate({ path: "user", select: "-password" })
       .populate({ path: "comments.user", select: "-password" });
-    res.status(200).json({ feedPosts, message: "My Latest Post" });
+    res.status(200).json(feedPosts);
   } catch (error) {
     console.log("Error in getUserPosts Controller : ", error.message);
     res.status(500).json({ error: "Internal Server Error" });

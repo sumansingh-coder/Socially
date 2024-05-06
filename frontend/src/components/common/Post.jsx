@@ -19,7 +19,6 @@ const Post = ({ post }) => {
 
   const postOwner = post.user;
   const isLiked = post.likes.includes(authUser.user._id);
-  console.log(isLiked);
 
   const isMyPost = authUser.user._id === post.user._id;
 
