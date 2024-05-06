@@ -20,7 +20,7 @@ cloudinary.config({
 });
 
 app.use(cookieParser()); //to decode cookie and able to use
-app.use(express.json()); //to parse reqbody
+app.use(express.json({ limit: "5mb" })); //to parse reqbody
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", authRoutes);
