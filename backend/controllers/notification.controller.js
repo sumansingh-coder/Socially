@@ -9,9 +9,7 @@ export const getNotifications = async (req, res) => {
     });
 
     await Notification.updateMany({ to: userId }, { read: true });
-    res
-      .status(200)
-      .json({ notification, message: "Notification read successfully" });
+    res.status(200).json(notification);
   } catch (error) {
     console.log("Error in getNotifications Controller : ", error.message);
     res.status(500).json({ error: "Internal Server Error" });
