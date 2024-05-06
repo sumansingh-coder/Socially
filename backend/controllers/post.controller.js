@@ -74,7 +74,8 @@ export const commentOnPost = async (req, res) => {
 
     post.comments.push(comment);
     await post.save();
-    return res.status(200).json({ post, message: "Comment Successful" });
+    const updatedComments = post.comments;
+    return res.status(200).json(updatedComments);
   } catch (error) {
     console.log("Error in commentOnPost Controller : ", error.message);
     res.status(500).json({ error: "Internal Server Error" });
