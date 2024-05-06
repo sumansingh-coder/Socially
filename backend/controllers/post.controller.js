@@ -161,11 +161,14 @@ export const getFollowingPosts = async (req, res) => {
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ message: "User not found" });
     const following = user.followings;
-    const feedPosts = await Post.find({ user: { $in: followings } })
+    const feedPosts = await Post.find({ user: { $in: following } })
       .sort({ createdAt: -1 })
       .populate({ path: "user", select: "-password" })
       .populate({ path: "comments.user", select: "-password" });
-    res.status(200).json({ feedPosts, message: "Latest Post" });
+    if (feedPosts.length === 0) {
+      return res.status(200).json([]);
+    }
+    res.status(200).json(feedPosts);
   } catch (error) {
     console.log("Error in getFollowingPosts Controller : ", error.message);
     res.status(500).json({ error: "Internal Server Error" });
