@@ -42,7 +42,9 @@ const Sidebar = () => {
           className="flex justify-center md:justify-start items-center"
         >
           <XSvg className="px-2 w-12 h-12 rounded-full fill-white" />
-          <h1 className=" text-xl font-extrabold text-white ">SnapStream</h1>
+          <h1 className=" text-xl font-extrabold hidden md:block text-white ">
+            SnapStream
+          </h1>
         </Link>
         <ul className="flex flex-col gap-3 mt-4">
           <li className="flex justify-center md:justify-start">
